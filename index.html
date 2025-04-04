@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Duplication Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-ui">
+            <div id="click-counter">Clicks: <span id="counter">0</span></div>
+            <div id="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+        </div>
+        <div id="images-container">
+            <img alt="Click me!" class="clickable-image" id="original-image">
+        </div>
+        <div id="congratulations" class="hidden">
+            <h1>Congratulations!</h1>
+            <p>You've completed the challenge!</p>
+            <button id="explosion-button">Blow Them Up!</button>
+        </div>
+        <div id="restart-container" class="hidden">
+            <h2>Kaboom!</h2>
+            <p>All images have been destroyed!</p>
+            <button id="restart-button">Start Again</button>
+        </div>
+        <div id="explosion-container" class="hidden"></div>
+
+        <!-- Audio elements for sound effects -->
+        <audio id="explosion-sound" preload="auto">
+            <source src="https://www.soundjay.com/mechanical/sounds/explosion-01.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="button-sound" preload="auto">
+            <source src="https://www.soundjay.com/button/sounds/button-09.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Direct script to ensure button works -->
+    <script>
+        // Wait for page to fully load
+        window.onload = function() {
+            // Try to set up the button directly
+            setTimeout(function() {
+                var btn = document.getElementById('explosion-button');
+                if (btn) {
+                    console.log('Found button in direct script tag');
+                    btn.addEventListener('click', function() {
+                        console.log('Button clicked from direct script tag');
+                    });
+                }
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
