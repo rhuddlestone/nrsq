@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartButton = document.getElementById('restart-button');
     const explosionSound = document.getElementById('explosion-sound');
     const buttonSound = document.getElementById('button-sound');
+    const cookiesSound = document.getElementById('cookies-sound');
 
     // Image sources
     const imageSources = {
-        primary: 'narisi.webp',
-        alternate1: 'sayori.webp',
-        alternate2: 'cmonster.webp'
+        primary: 'assets/images/narisi.webp',
+        alternate1: 'assets/images/sayori.webp',
+        alternate2: 'assets/images/cmonster.webp'
     };
 
     // Function to randomly select an image source (1% chance for each alternate image)
@@ -25,6 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (random < 0.01) {
             return imageSources.alternate1; // 1% chance for sayori.webp
         } else if (random < 0.02) {
+            // Play the cookies sound when cmonster.webp is selected
+            if (cookiesSound) {
+                cookiesSound.currentTime = 0;
+                cookiesSound.play().catch(e => console.log('Audio play failed:', e));
+            }
             return imageSources.alternate2; // 1% chance for cmonster.webp
         } else {
             return imageSources.primary; // 98% chance for narisi.webp
