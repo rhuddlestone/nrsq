@@ -15,12 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Image sources
     const imageSources = {
         primary: 'narisi.webp',
-        alternate: 'sayori.webp'
+        alternate1: 'sayori.webp',
+        alternate2: 'cmonster.webp'
     };
 
-    // Function to randomly select an image source (1% chance for alternate)
+    // Function to randomly select an image source (1% chance for each alternate image)
     function getRandomImageSource() {
-        return Math.random() < 0.01 ? imageSources.alternate : imageSources.primary;
+        const random = Math.random();
+        if (random < 0.01) {
+            return imageSources.alternate1; // 1% chance for sayori.webp
+        } else if (random < 0.02) {
+            return imageSources.alternate2; // 1% chance for cmonster.webp
+        } else {
+            return imageSources.primary; // 98% chance for narisi.webp
+        }
     }
 
     // Game variables
@@ -29,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`Target clicks to win: ${targetClicks}`);
 
     // Set up the original image
-    // Randomly select the initial image (1% chance for alternate)
+    // Randomly select the initial image (1% chance for each alternate image)
     originalImage.src = getRandomImageSource();
 
     // Set up the original image click handler
@@ -64,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newImage.classList.add('clickable-image', 'new-image');
         newImage.alt = 'Click me!';
 
-        // Randomly select image source (1% chance for alternate image)
+        // Randomly select image source (1% chance for each alternate image)
         newImage.src = getRandomImageSource();
 
         // Get image dimensions from the clicked image
@@ -304,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const allDuplicates = document.querySelectorAll('.clickable-image:not(#original-image)');
         allDuplicates.forEach(img => img.remove());
 
-        // Randomly select a new image for the original image (1% chance for alternate)
+        // Randomly select a new image for the original image (1% chance for each alternate image)
         originalImage.src = getRandomImageSource();
 
         // Show and reset the original image
