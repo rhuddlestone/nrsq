@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         alternate: 'sayori.webp'
     };
 
-    // Function to randomly select an image source (10% chance for alternate)
+    // Function to randomly select an image source (1% chance for alternate)
     function getRandomImageSource() {
-        return Math.random() < 0.1 ? imageSources.alternate : imageSources.primary;
+        return Math.random() < 0.01 ? imageSources.alternate : imageSources.primary;
     }
 
     // Game variables
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`Target clicks to win: ${targetClicks}`);
 
     // Set up the original image
-    // Randomly select the initial image (10% chance for alternate)
+    // Randomly select the initial image (1% chance for alternate)
     originalImage.src = getRandomImageSource();
 
     // Set up the original image click handler
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newImage.classList.add('clickable-image', 'new-image');
         newImage.alt = 'Click me!';
 
-        // Randomly select image source (10% chance for alternate image)
+        // Randomly select image source (1% chance for alternate image)
         newImage.src = getRandomImageSource();
 
         // Get image dimensions from the clicked image
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const allDuplicates = document.querySelectorAll('.clickable-image:not(#original-image)');
         allDuplicates.forEach(img => img.remove());
 
-        // Randomly select a new image for the original image (10% chance for alternate)
+        // Randomly select a new image for the original image (1% chance for alternate)
         originalImage.src = getRandomImageSource();
 
         // Show and reset the original image
