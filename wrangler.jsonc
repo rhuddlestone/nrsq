@@ -2,10 +2,6 @@
   "name": "naranui-games",
   "compatibility_date": "2025-04-04",
   "assets": {
-    "directory": "./",
-    "include": ["*.html", "*.css", "*.js", "*.webp"]
-  },
-  "site": {
-    "bucket": "./"
+    "directory": "./"
   }
 }
